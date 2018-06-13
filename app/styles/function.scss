@@ -38,3 +38,34 @@
 }
 
 @include generate-spacing-classes($spacing);
+
+
+@mixin responsive($media) {
+  @if $media == phone-only {
+    @media only screen and (max-width: $phone-only) { @content; }
+  }
+  @else if $media == tab-portrait-up {
+    @media only screen and (min-width: $tab-portrait-up) { @content; }
+  }
+  @else if $media == tab-portrait-down {
+    @media only screen and (max-width: $tab-portrait-up - 1) { @content; }
+  }
+  @else if $media == tab-landscape-up {
+    @media only screen and (min-width: $tab-landscape-up) { @content; }
+  }
+  @else if $media == tab-landscape-down {
+    @media only screen and (max-width: $tab-landscape-up - 1) { @content; }
+  }
+  @else if $media == desktop-up {
+    @media only screen and (min-width: $desktop-up) { @content; }
+  }
+  @else if $media == desktop-down {
+    @media only screen and (max-width: $desktop-up - 1) { @content; }
+  }
+  @else if $media == big-desktop-up {
+    @media only screen and (min-width: $big-desktop-up) { @content; }
+  }
+  @else if $media == big-desktop-down {
+    @media only screen and (min-width: $big-desktop-up - 1) { @content; }
+  }
+}

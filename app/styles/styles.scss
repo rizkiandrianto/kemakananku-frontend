@@ -5,7 +5,7 @@
 
 /* Reset */
 body {
-    background-color: #fff;
+    background-color: #4b4b4b;
     margin: 0;
     padding: 0;
     font-family: 'Nunito', sans-serif;
@@ -35,6 +35,46 @@ a {
 
 /* End of Reset */
 
+.header, .footer, .page-container {
+    transition: right .3s ease;
+    position: relative;
+    right: 0;
+}
+
+@include responsive(phone-only) {
+    .mobile-menu-active {
+        position: relative;
+        right: 50vh;
+    }
+}
+
+.mobile-menu {
+    position: fixed;
+    transform: translateX(100%);
+    top:0;
+    width: 50vh;
+    transition: transform .3s ease;
+    color: #fff;
+    padding: 16px;
+    right: 0;
+
+    ul {
+        padding: 0;
+        li {
+            list-style: none;
+            padding: 8px 0;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid #333;
+            }
+        }
+    }
+
+    &.active {
+        transform: translateX(0);
+    }
+}
+
 .header {
     $header-height: 60px;
     height: $header-height;
@@ -43,6 +83,10 @@ a {
     width: 100vw;
     z-index: 3;
     background: rgba(255, 255, 255, 0.8);
+
+    @include responsive(tab-portrait-down) {
+        border-bottom: 1px solid #f5f5f5;
+    }
 
     .mainlogo {
         display: block;
@@ -54,6 +98,7 @@ a {
     .mainmenu {
         text-align: right;
         margin: 0;
+        padding: 0;
 
         li {
             display: inline-block;
@@ -65,6 +110,37 @@ a {
             }
         }
     }
+}
+
+.footer {
+    @extend .header;
+    $footer-height: 60px;
+    background: #4B4B4B;
+    color: #fff;
+    height: $footer-height;
+    line-height: $footer-height;
+    position: relative;
+    width: 100%;
+
+    @include responsive(tab-portrait-down) {
+        height: auto;
+    }
+
+    .mainmenu {
+
+        li {
+            color: #fff;
+
+            @include responsive(tab-portrait-down) {
+                text-align: left;
+                display: block;
+            }
+        }
+    }
+}
+
+.page-container {
+    background: #fff;
 }
 
 .aboveTheFold {
@@ -113,6 +189,11 @@ a {
       padding-left: 15%;
       z-index: 1;
 
+      @include responsive(tab-portrait-down) {
+        width: 100%;
+        padding: 0 16px;
+      }
+
       h2 {
         font-size: 34px;
         margin: 0;
@@ -143,6 +224,11 @@ a {
 
       img {
         width: 100%;
+
+        @include responsive(tab-landscape-down) {
+            width: initial;
+            height: 100%;
+        }
       }
     }
 
@@ -179,29 +265,12 @@ a {
         font-size: 17px;
     }
 
-    &.catering, &.menu {
+    &.catering, &.menu, &.maps, &.testimonial {
         padding: 60px 0 32px;
         min-height: 100vh;
-    }
 
-    &.menu {
-        &::after, &::before {
-            display: block;
-            position: absolute;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0, #fff);
-            margin-top: 0;
-            height: 100%;
-            width: 20%;
-            content: '';
-            right: 0;
-            top: 0;
-            z-index: 1;
-        }
-
-        &::before {
-            background-image: linear-gradient(to left, rgba(255, 255, 255, 0) 0, #fff);
-            right: initial;
-            left:0;
+        @include responsive(tab-landscape-down) {
+            min-height: 50vh;
         }
     }
 }
@@ -215,6 +284,14 @@ a {
     margin-bottom: 16px;
     display: inline-block;
     border: 1px solid #eee;
+
+    @include responsive(tab-portrait-down) {
+        width: calc(50% - 16px);
+    }
+
+    @include responsive(phone-only) {
+        width: calc(100%);
+    }
 
     .thumbnail {
         height: 100px;
@@ -309,7 +386,26 @@ a {
     }
 }
 
-.slider-menu-list {
+.slider-list {
+    &::after, &::before {
+        display: block;
+        position: absolute;
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0, #fff);
+        margin-top: 0;
+        height: 100%;
+        width: 20%;
+        content: '';
+        right: 0;
+        top: 0;
+        z-index: 1;
+    }
+
+    &::before {
+        background-image: linear-gradient(to left, rgba(255, 255, 255, 0) 0, #fff);
+        right: initial;
+        left:0;
+    }
+
     .slick-next, .slick-prev {
         width: 40px;
         line-height: 40px;
@@ -334,5 +430,38 @@ a {
 
     .slick-prev {
         left: 100px;
+    }
+}
+
+.testimonial-box {
+    border: 1px solid #eee;
+
+    .quotes {
+        height: 100px;
+        background: #F8F8F8;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        color: $grey1;
+        justify-content: center;
+        font-style: italic;
+    }
+
+    .testimonial-detail {
+        padding: 16px;
+        font-size: 14px;
+
+        .avatar {
+            width: 40px;
+            border-radius: 100%;
+            margin-right: 8px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .testimonial-owner-detail {
+            width: calc(100% - 48px);
+            display: inline-block;
+        }
     }
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Head from 'components/head';
-import Button from 'components/Button';
+import Button from 'components/button/Button';
 import withRedux from 'next-redux-wrapper';
 import initStore from 'redux/stores';
 import { setCount } from 'redux/actions/MainAction';

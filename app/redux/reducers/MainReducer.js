@@ -6,6 +6,12 @@ export default function reducer(state = store, action) {
             return Object.assign({}, state, {
                 count: state.count + 1
             });
+        case 'SET_HEADERMENU_MOBILE':
+            return {
+                ...state,
+                headerMenuMobile: action.value != null ? action.value :
+                !state.headerMenuMobile
+            };
         default:
             return state;
     }
