@@ -1,0 +1,40 @@
+@mixin generate-spacing-classes($spacing) {
+  @each $space in $spacing {
+    .ma-#{nth($space, 1)} {
+      margin: #{nth($space, 1)}px !important;
+    }
+    .pa-#{nth($space, 1)} {
+      padding: #{nth($space, 1)}px !important;
+    }
+
+    .ml-#{nth($space, 1)} {
+      margin-left: #{nth($space, 1)}px !important;
+    }
+    .pl-#{nth($space, 1)} {
+      padding-left: #{nth($space, 1)}px !important;
+    }
+
+    .mr-#{nth($space, 1)} {
+      margin-right: #{nth($space, 1)}px !important;
+    }
+    .pr-#{nth($space, 1)} {
+      padding-right: #{nth($space, 1)}px !important;
+    }
+
+    .mt-#{nth($space, 1)} {
+      margin-top: #{nth($space, 1)}px !important;
+    }
+    .pt-#{nth($space, 1)} {
+      padding-top: #{nth($space, 1)}px !important;
+    }
+
+    .mb-#{nth($space, 1)} {
+      margin-bottom: #{nth($space, 1)}px !important;
+    }
+    .pb-#{nth($space, 1)} {
+      padding-bottom: #{nth($space, 1)}px !important;
+    }
+  }
+}
+
+@include generate-spacing-classes($spacing);
