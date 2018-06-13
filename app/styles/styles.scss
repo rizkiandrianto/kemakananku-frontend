@@ -11,7 +11,8 @@ body {
     font-family: 'Nunito', sans-serif;
 
     p {
-        color: rgb(122, 122, 122)
+        color: rgb(122, 122, 122);
+        margin: 0;
     }
 }
 
@@ -20,6 +21,15 @@ body {
 }
 
 a {
+    cursor: pointer;
+    color: $orange1;
+}
+
+.btn {
+    padding: 8px 24px;
+    background: $orange1;
+    color: #fff;
+    border-radius: 20px;
     cursor: pointer;
 }
 
@@ -155,10 +165,81 @@ a {
     }
 }
 
-.btn {
-    padding: 8px 24px;
-    background: $orange1;
-    color: #fff;
-    border-radius: 20px;
-    cursor: pointer;
+.section {
+    .title {
+        font-size: 30px;
+        color: $orange1;
+    }
+
+    .desc {
+        color: $orange1;
+        font-size: 17px;
+    }
+
+    &.catering {
+        padding: 60px 0 32px;
+        min-height: 100vh;
+    }
+}
+
+.catering-box {
+    color: $grey1;
+    width: calc(33.3% - 16px);
+    text-align: left;
+    padding: 0 16px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    display: inline-block;
+    border: 1px solid #eee;
+
+    .thumbnail {
+        height: 100px;
+        overflow: hidden;
+        margin: 0 -16px;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .title {
+        font-size: 16px;
+        color: $grey1;
+        margin-top: 16px;
+    }
+
+    .desc {
+        font-size: 14px;
+        color: $grey1;
+        margin-top: 16px;
+    }
+
+    .detail {
+        display: flex;
+        margin: 32px 0 16px;
+        font-size: 14px;
+
+        & > * {
+            width: 33.3%;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .location {
+            p {
+                text-overflow: ellipsis;
+                width: 100%;
+                overflow: hidden;
+            }
+        }
+
+        .more {
+            text-align: right;
+
+            a {
+                color: $orange1;
+            }
+        }
+    }
 }

@@ -38,7 +38,7 @@ Head.propTypes = {
 };
 
 Head.defaultProps = {
-  title: 'Simple Next Boilerplate',
+  title: 'Kemakananku',
   description: '',
   url: '',
   ogImage: ''

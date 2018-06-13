@@ -11,12 +11,6 @@ module.exports = {
       fs: 'empty'
     };
 
-		config.entry = () =>
-			oldEntry().then(entry => {
-				entry['main.js'] && entry['main.js'].push(path.resolve('./app/utils/offline'))
-				return entry
-      })
-      
     config.resolve = {
       modules: ['node_modules', './']
     };
@@ -64,7 +58,13 @@ module.exports = {
 
     /* Enable only in Production */
 		if (!dev) {
-      config.plugins = [...config.plugins, 
+      config.entry = () =>
+			oldEntry().then(entry => {
+				entry['main.js'] && entry['main.js'].push(path.resolve('./app/utils/offline'))
+				return entry
+      })
+
+      config.plugins = [...config.plugins,
         new SWPrecacheWebpackPlugin({
           cacheId: 'next-ss',
           filepath: './app/static/sw.js',

@@ -5,10 +5,18 @@ class Button extends Component {
     static propTypes = {
         children: object,
         text: string,
-        className: string
+        className: string,
+        to: string
     }
 
     render() {
+        if (this.props.to) {
+            return (
+                <a href={this.props.to} className={`btn ${this.props.className || ''}`}>
+                    {this.props.children || this.props.text}
+                </a>
+            );
+        }
         return (
             <button className={`btn ${this.props.className || ''}`}>
                 {this.props.children || this.props.text}
