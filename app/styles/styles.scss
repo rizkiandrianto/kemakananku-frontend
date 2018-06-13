@@ -44,19 +44,24 @@ a {
 @include responsive(phone-only) {
     .mobile-menu-active {
         position: relative;
-        right: 50vh;
+        right: 90vw;
     }
 }
 
 .mobile-menu {
+    display: none;
     position: fixed;
     transform: translateX(100%);
     top:0;
-    width: 50vh;
+    width: 90vw;
     transition: transform .3s ease;
     color: #fff;
     padding: 16px;
     right: 0;
+
+    @include responsive(phone-only) {
+        display: block;
+    }
 
     ul {
         padding: 0;
