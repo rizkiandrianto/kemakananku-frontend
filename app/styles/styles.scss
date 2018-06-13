@@ -166,6 +166,9 @@ a {
 }
 
 .section {
+    overflow: hidden;
+    position: relative;
+
     .title {
         font-size: 30px;
         color: $orange1;
@@ -176,9 +179,30 @@ a {
         font-size: 17px;
     }
 
-    &.catering {
+    &.catering, &.menu {
         padding: 60px 0 32px;
         min-height: 100vh;
+    }
+
+    &.menu {
+        &::after, &::before {
+            display: block;
+            position: absolute;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0, #fff);
+            margin-top: 0;
+            height: 100%;
+            width: 20%;
+            content: '';
+            right: 0;
+            top: 0;
+            z-index: 1;
+        }
+
+        &::before {
+            background-image: linear-gradient(to left, rgba(255, 255, 255, 0) 0, #fff);
+            right: initial;
+            left:0;
+        }
     }
 }
 
@@ -186,7 +210,7 @@ a {
     color: $grey1;
     width: calc(33.3% - 16px);
     text-align: left;
-    padding: 0 16px;
+    padding: 0 16px 16px;
     margin-right: 16px;
     margin-bottom: 16px;
     display: inline-block;
@@ -217,7 +241,7 @@ a {
 
     .detail {
         display: flex;
-        margin: 32px 0 16px;
+        margin: 32px 0 0;
         font-size: 14px;
 
         & > * {
@@ -241,5 +265,74 @@ a {
                 color: $orange1;
             }
         }
+    }
+}
+
+.menu-box {
+    @extend .catering-box;
+    width: 100%;
+
+    .thumbnail {
+        height: 200px;
+    }
+
+    .menu-detail {
+        vertical-align: top;
+        font-size: 13px;
+        margin: 16px 0 0;
+
+        .avatar {
+            width: 40px;
+            border-radius: 100%;
+            margin-right: 8px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .menu-owner-detail {
+            width: calc(100% - 48px);
+            display: inline-block;
+        }
+
+        .label {
+            text-align: right;
+
+            img {
+                width: 25px;
+                display: inline-block;
+
+                &:not(:last-child) {
+                    margin-right: 4px;
+                }
+            }
+        }
+    }
+}
+
+.slider-menu-list {
+    .slick-next, .slick-prev {
+        width: 40px;
+        line-height: 40px;
+        border-radius: 100%;
+        box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.16);
+        display: block;
+        height: 40px;
+        text-align: center;
+        color: $orange1;
+        font-size: 14px;
+        z-index: 2;
+        background: #fff;
+
+        &::before {
+            display: none;
+        }
+    }
+
+    .slick-next {
+        right: 100px;
+    }
+
+    .slick-prev {
+        left: 100px;
     }
 }

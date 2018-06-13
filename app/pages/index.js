@@ -3,6 +3,7 @@ import Layout from 'components/layout';
 import Slider from 'react-slick';
 import Button from 'components/Button';
 import CateringBox from 'components/box/CateringBox';
+import MenuBox from 'components/box/MenuBox';
 
 class Landing extends Component {
   renderBackground() {
@@ -22,6 +23,39 @@ class Landing extends Component {
         </div>
         <div className="hero-image">
           <img alt="bg" src="/static/img/bg-landing2.jpeg" />
+        </div>
+      </Slider>
+    );
+  }
+
+  renderMenuList() {
+    const SlickButton = ({
+        currentSlide, slideCount, children, ...props
+    }) => (
+        <button {...props}>{children}</button>
+    );
+    const settings = {
+      centerMode: true,
+      centerPadding: '60px',
+      slidesToShow: 3,
+      prevArrow: <SlickButton><span className="fa fa-arrow-left" /></SlickButton>,
+      nextArrow: <SlickButton><span className="fa fa-arrow-right" /></SlickButton>,
+      className: 'slider-menu-list'
+    };
+
+    return (
+      <Slider {...settings}>
+        <div className="pa-16">
+          <MenuBox />
+        </div>
+        <div className="pa-16">
+          <MenuBox />
+        </div>
+        <div className="pa-16">
+          <MenuBox />
+        </div>
+        <div className="pa-16">
+          <MenuBox />
         </div>
       </Slider>
     );
@@ -62,6 +96,17 @@ class Landing extends Component {
               </div>
             </div>
           </div>
+
+          <p className="text-center mt-24">
+            <a>View All</a>
+          </p>
+        </div>
+
+        <div className="menu section text-center" id="catering">
+          <h4 className="title">Menu</h4>
+          <p className="desc mb-24">Testy food always can make your moment really happy</p>
+
+          {this.renderMenuList()}
 
           <p className="text-center mt-24">
             <a>View All</a>
