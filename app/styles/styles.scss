@@ -146,6 +146,21 @@ a {
 
 .page-container {
     background: #fff;
+    position: relative;
+
+    &.mobile-menu-active {
+        &:after{
+            display: block;
+            position: absolute;
+            right: 0;
+            width: 100%;
+            top: 0;
+            background: rgba(0, 0, 0, 0.4);
+            content: '';
+            z-index: 2;
+            height: 100%;
+        }
+    }
 }
 
 .aboveTheFold {
