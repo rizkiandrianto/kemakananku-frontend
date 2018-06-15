@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import Header from 'components/layout/Header';
 import Footer from 'components/layout/Footer';
 import Head from 'components/head';
-import { bool, object } from 'prop-types';
+import { array, bool, object, oneOfType } from 'prop-types';
 import { connect } from 'react-redux';
 import MobileMenu from 'components/layout/MobileMenu';
 
 class Layout extends Component {
   static propTypes = {
-    children: object,
+    children: oneOfType([object, array]),
     menuMobile: bool
   }
 

@@ -394,6 +394,11 @@ a {
         .label {
             text-align: right;
 
+            @include responsive(phone-only) {
+                text-align: left;
+                margin-top: 8px;
+            }
+
             img {
                 width: 25px;
                 display: inline-block;
@@ -401,6 +406,17 @@ a {
                 &:not(:last-child) {
                     margin-right: 4px;
                 }
+            }
+        }
+    }
+
+    .title {
+        .price {
+            text-align: right;
+
+            @include responsive(phone-only) {
+                text-align: left;
+                margin-top: 8px;
             }
         }
     }
@@ -482,6 +498,8 @@ a {
         .testimonial-owner-detail {
             width: calc(100% - 48px);
             display: inline-block;
+            text-align: left;
+            vertical-align: middle;
         }
     }
 }

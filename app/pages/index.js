@@ -47,6 +47,92 @@ const settingsSliderGlobal = {
 };
 
 class Landing extends Component {
+  constructor() {
+    super();
+
+    // Ini adalah contoh data
+    this.state = {
+      background: [
+        {
+          name: 'Bg1',
+          src: '/static/img/bg-landing1.jpeg'
+        },
+        {
+          name: 'Bg2',
+          src: '/static/img/bg-landing2.jpeg'
+        }
+      ],
+      menu: [
+        {
+          image: 'https://images.unsplash.com/photo-1518619745898-93e765966dcd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fbb64274b97b8894117e0cd95408feb8&auto=format&fit=crop&w=805&q=80',
+          name: 'Catering 1',
+          price: 25123,
+          owner: {
+            name: 'Rizki Andrianto',
+            location: 'Jakarta, Indonesia'
+          },
+          contains: [
+            'eggs'
+          ]
+        },
+        {
+          image: 'https://images.unsplash.com/photo-1480455454781-1af590be2a58?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=932f17ffb9074c29e46353e2db5420fc&auto=format&fit=crop&w=750&q=80',
+          name: 'Catering 2',
+          price: 25123,
+          owner: {
+            name: 'Rizki Andrianto',
+            location: 'Jakarta, Indonesia'
+          },
+          contains: [
+            'eggs'
+          ]
+        },
+        {
+          image: 'https://images.unsplash.com/photo-1473366514866-3649b6c30284?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4400bfbe15140ee3a1d42c1d687ffdfa&auto=format&fit=crop&w=752&q=80',
+          name: 'Catering 3',
+          price: 25123,
+          owner: {
+            name: 'Rizki Andrianto',
+            location: 'Jakarta, Indonesia'
+          },
+          contains: [
+            'eggs'
+          ]
+        },
+        {
+          image: 'https://images.unsplash.com/photo-1493808655842-aa308811e178?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6c722a187ee37da777570b6981cd60cd&auto=format&fit=crop&w=750&q=80',
+          name: 'Catering 4',
+          price: 25123,
+          owner: {
+            name: 'Rizki Andrianto',
+            location: 'Jakarta, Indonesia'
+          },
+          contains: [
+            'eggs'
+          ]
+        }
+      ],
+      testimonial: [
+        {
+          name: 'Rizki Andrianto',
+          comment: 'This test awesome food recomended place.'
+        },
+        {
+          name: 'Benjamin Netanyahu',
+          comment: 'Benjamin "Bibi" Netanyahu adalah Perdana Menteri Israel'
+        },
+        {
+          name: 'Larry Page',
+          comment: 'Lawrence Edward Page is an American computer scientist and Internet entrepreneur who co-founded Google with Sergey Brin.'
+        },
+        {
+          name: 'uvuvwevwevwe onyetenyevwe ',
+          comment: 'Bahkan beberapa orang termasuk public figure mencoba menyebutkan nama lengkap dari Osas ini.'
+        }
+      ]
+    };
+  }
+
   renderBackground() {
     const settings = {
       dots: true,
@@ -60,12 +146,13 @@ class Landing extends Component {
 
     return (
       <Slider {...settings}>
-        <div className="hero-image">
-          <img alt="bg" src="/static/img/bg-landing1.jpeg" />
-        </div>
-        <div className="hero-image">
-          <img alt="bg" src="/static/img/bg-landing2.jpeg" />
-        </div>
+        {
+          this.state.background.map((key, index) => (
+            <div className="hero-image" key={index}>
+              <img alt={key.name} src={key.src} />
+            </div>
+          ))
+        }
       </Slider>
     );
   }
@@ -73,18 +160,13 @@ class Landing extends Component {
   renderMenuList() {
     return (
       <Slider {...settingsSliderGlobal}>
-        <div className="pa-16">
-          <MenuBox />
-        </div>
-        <div className="pa-16">
-          <MenuBox />
-        </div>
-        <div className="pa-16">
-          <MenuBox />
-        </div>
-        <div className="pa-16">
-          <MenuBox />
-        </div>
+        {
+          this.state.menu.map((key, index) => (
+            <div className="pa-16" key={index}>
+              <MenuBox data={key} />
+            </div>
+          ))
+        }
       </Slider>
     );
   }
@@ -92,18 +174,13 @@ class Landing extends Component {
   renderTestimonial() {
     return (
       <Slider {...settingsSliderGlobal}>
-        <div className="pa-16">
-          <TestimonialBox />
-        </div>
-        <div className="pa-16">
-          <TestimonialBox />
-        </div>
-        <div className="pa-16">
-          <TestimonialBox />
-        </div>
-        <div className="pa-16">
-          <TestimonialBox />
-        </div>
+        {
+          this.state.testimonial.map((key, index) => (
+            <div className="pa-16" key={index}>
+              <TestimonialBox data={key} />
+            </div>
+          ))
+        }
       </Slider>
     );
   }
